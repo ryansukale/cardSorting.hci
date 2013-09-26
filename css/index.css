@@ -1,0 +1,49 @@
+.organizer-type{
+	width:350px;
+	min-height:590px;
+	overflow:auto;
+	background-color:rgb(240, 240, 240);
+	border: 1px solid rgb(168, 168, 168);
+}
+
+#digitalOrganizer{
+	float:left;
+	
+}
+
+#paperOrganizer{
+	float:right;
+}
+
+div.item{
+	
+	width:200px;
+	background-color:green;
+	padding:5px;
+	text-align:center;
+	background-color:rgb(107, 126, 182);
+	color:white;
+	cursor:pointer;
+}
+
+
+.hover-state{
+	background-color: rgb(225, 225, 243);
+}
+
+.user-options{
+	position:absolute;
+	left:500px;
+	top:10px;
+	border:1px solid #dadada;
+	width:340px;
+}
+
+div.item{
+	width:90%;
+	margin: 5px auto 5px auto;
+}
+
+.title{
+	text-align:center;
+}
