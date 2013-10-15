@@ -1,19 +1,11 @@
-.no-bg{
-	background:none;
-}
+.no-bg{background:none;}
 
-.georgia{
-	font-family:Georgia;
-}
+.georgia{font-family:Georgia;}
 
-.italic{
-	font-style:italic;
-}
+.italic{font-style:italic;}
 
-.justify{
-	text-align:justify;
-}
+.justify{text-align:justify;}
 
-.center{
-	text-align:center;
-}
+.tac{text-align:center;}
+
+.center{text-align:center;margin-left:auto;padding-left:5px;}

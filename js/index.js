@@ -20,27 +20,28 @@ $(function(){
 		}
 	});
 	
-  //$( "#draggable" ).draggable();
-  //  $( "#droppable" ).droppable({
-  //    hoverClass: "ui-state-active",
-  //    drop: function( event, ui ) {
-  //      $( this )
-  //        .addClass( "ui-state-highlight" )
-  //        .find( "p" )
-  //          .html( "Dropped!" );
-  //    }
-  //  });
-  //
-  //  $( "#draggable2" ).draggable();
-  //  $( "#paperOrganizer, #digitalOrganizer" ).droppable({
-  //    accept: "#draggable2",
-  //    activeClass: "ui-state-hover",
-  //    drop: function( event, ui ) {
-  //      $( this )
-  //        .addClass( "ui-state-highlight" )
-  //        .find( "li" )
-  //          .html( "Dropped!" );
-  //    }
-  //  });
-
+	
+	function bindHandlers(){
+		$('.add-card').on('click',function(event){
+			var $this = $(this);
+			var $target = $(event.target);
+			
+			$( "#addCard" ).dialog({
+				modal: true,
+				buttons: {
+					"Done": function() {
+						$( this ).dialog( "close" );
+					},
+					Cancel: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+			
+		});
+		
+	}
+	
+	bindHandlers();
+	
 });

@@ -47,3 +47,21 @@ div.item{
 .title{
 	text-align:center;
 }
+
+.main-menu{
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-color:#000;
+	color:white;
+	width:90px;
+}
+
+.main-menu:hover{cursor:pointer;}
+
+.menu-option{
+	width:90px;
+	height:40px;
+	line-height:40px;
+	border-top:1px solid #808080;
+}
