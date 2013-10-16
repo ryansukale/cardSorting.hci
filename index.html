@@ -41,7 +41,7 @@
         <div class="container">
 		
 			<div class="main-menu">
-				<div class="menu-option add-card tac">Add Card</div>
+				<div class="menu-option add-card tac">Add Cards</div>
 				<div class="menu-option add-category tac">Add Category</div>
 			</div>
 
@@ -51,25 +51,25 @@
 			</div>
 
 
-			<div class="user-options">
+			<div class="deck">
 				
-					<div class="item">Easy to write</div>
-					<div class="item">Easy to reflect</div>
-					<div class="item">Customizable</div>
-					<div class="item">Messy</div>
-					<div class="item">Easy to lose information</div>
-					<div class="item">Satisfying</div>
-					<div class="item">Stylish</div>
-					<div class="item">Pretty</div>
-					<div class="item">Bulky</div>
-					<div class="item">Expensive</div>
-					<div class="item">Easily Searchable</div>
-					<div class="item">Always accesible</div>
-					<div class="item">See the big picture</div>
-					<div class="item">Collaborate</div>
-					<div class="item">Motivating</div>
-					<div class="item">Difficult to manage</div>
-					<div class="item">Redundant</div>
+					<div class="card">Easy to write</div>
+					<div class="card">Easy to reflect</div>
+					<div class="card">Customizable</div>
+					<div class="card">Messy</div>
+					<div class="card">Easy to lose information</div>
+					<div class="card">Satisfying</div>
+					<div class="card">Stylish</div>
+					<div class="card">Pretty</div>
+					<div class="card">Bulky</div>
+					<div class="card">Expensive</div>
+					<div class="card">Easily Searchable</div>
+					<div class="card">Always accesible</div>
+					<div class="card">See the big picture</div>
+					<div class="card">Collaborate</div>
+					<div class="card">Motivating</div>
+					<div class="card">Difficult to manage</div>
+					<div class="card">Redundant</div>
 			</div>			
 			 
 			<div id="paperOrganizer" class=" organizer-type">
@@ -80,7 +80,7 @@
         </div> <!-- /container -->
 		
 		<div id="addCard" title="Add New Cards">
-			<textarea name="" id="" cols="30" rows="10" placeholder="Enter card values seperated by a comma"></textarea>
+			<textarea name="cardTitlesTA" id="cardTitlesTA" cols="30" rows="10" placeholder="Enter card values seperated by a comma"></textarea>
 		</div>
 
     </body>
@@ -113,5 +113,9 @@
 	
 	<!-- Script specific to this page -->
 	<script src="js/index.js"></script>
+	
+	<script type="text/template" id="cardTmpl">
+		<div class="card"><%=title%></div>
+	</script>
 	
 </html>

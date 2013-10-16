@@ -15,7 +15,7 @@
 	float:right;
 }
 
-div.item{
+div.card{
 	
 	width:200px;
 	background-color:green;
@@ -31,7 +31,7 @@ div.item{
 	background-color: rgb(225, 225, 243);
 }
 
-.user-options{
+.deck{
 	position:absolute;
 	left:500px;
 	top:10px;
@@ -39,7 +39,7 @@ div.item{
 	width:340px;
 }
 
-div.item{
+div.card{
 	width:90%;
 	margin: 5px auto 5px auto;
 }

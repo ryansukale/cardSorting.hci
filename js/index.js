@@ -1,9 +1,38 @@
 $(function(){
 
 	
-	var counter = 0;
+	var counter = 0,
+	cardTitles = [], // An array of all the card titles
+	cardTmpl = '';
+	
+	function compileTemplates(){
+		cardTmpl = _.template($('#cardTmpl').html());
+	}
+	
+	function setCards(cardTitles){
+		console.log(cardTitles);
+		
+		var cardTitlesArray = cardTitles.split(',');
+		
+		cardTitles = [];
+		var cardTitlesStr = '';
+		
+		
+		$.each(cardTitlesArray, function(index, element){
+			var trimmedValue = element.trim();
+			if(trimmedValue!==''){
+			
+				cardTitles.push(cardTmpl({title:trimmedValue}));
+				
+			}
+		});
+		
+		$('.deck').empty().append(cardTitles.join(''));
+		$( "div.card" ).draggable();
+		
+	}
 
-	$( "div.item" ).draggable();
+	$( "div.card" ).draggable();
 	$( ".organizer-type" ).droppable({
 		hoverClass: "hover-state",
 		drop: function( event, ui ) {
@@ -30,7 +59,13 @@ $(function(){
 				modal: true,
 				buttons: {
 					"Done": function() {
+					
+						var cardTitles = $('#cardTitlesTA').val();
+						
+						setCards(cardTitles);
+						
 						$( this ).dialog( "close" );
+						
 					},
 					Cancel: function() {
 						$( this ).dialog( "close" );
@@ -42,6 +77,7 @@ $(function(){
 		
 	}
 	
+	compileTemplates();
 	bindHandlers();
 	
 });
