@@ -1,4 +1,4 @@
-.organizer-type{
+.category{
 	width:350px;
 	min-height:590px;
 	overflow:auto;
@@ -54,13 +54,13 @@ div.card{
 	top:0px;
 	background-color:#000;
 	color:white;
-	width:90px;
+	width:80px;
 }
 
 .main-menu:hover{cursor:pointer;}
 
 .menu-option{
-	width:90px;
+	width:80px;
 	height:40px;
 	line-height:40px;
 	border-top:1px solid #808080;

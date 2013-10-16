@@ -3,10 +3,13 @@ $(function(){
 	
 	var counter = 0,
 	cardTitles = [], // An array of all the card titles
-	cardTmpl = '';
+	cardTmpl = '',
+	cardTitles = [], // An array of all the category titles
+	categoryTmpl = '';
 	
 	function compileTemplates(){
 		cardTmpl = _.template($('#cardTmpl').html());
+		categoryTmpl = _.template($('#categoryTmpl').html());
 	}
 	
 	function setCards(cardTitles){
@@ -15,8 +18,6 @@ $(function(){
 		var cardTitlesArray = cardTitles.split(',');
 		
 		cardTitles = [];
-		var cardTitlesStr = '';
-		
 		
 		$.each(cardTitlesArray, function(index, element){
 			var trimmedValue = element.trim();
@@ -32,46 +33,96 @@ $(function(){
 		
 	}
 
-	$( "div.card" ).draggable();
-	$( ".organizer-type" ).droppable({
-		hoverClass: "hover-state",
-		drop: function( event, ui ) {
-			var $this = $( this );
+	function setCategories(categoryTitles){
+		console.log(categoryTitles);
+		
+		var categoryTitlesArray = categoryTitles.split(',');
+		
+		categoryTitles = [];
+		
+		
+		$.each(categoryTitlesArray, function(index, element){
+			var trimmedValue = element.trim();
+			if(trimmedValue!==''){
 			
-			//$this
-			//.addClass( "ui-state-highlight" );
-				//.append( ui.draggable );
+				categoryTitles.push(categoryTmpl({title:trimmedValue}));
 				
-				$(ui.draggable).draggable('destroy');
-				$(ui.draggable).draggable();
-				//counter++;
-				//$('.user-options .item').eq(counter).removeClass('hidden');
+			}
+		});
+		
+		//$('.deck').empty().append(cardTitles.join(''));
+		//$( "div.card" ).draggable();
+		
+		//Destroy any previously existing categories
+		$( ".category" ).droppable('destroy');
+		setupCategories();
+		
+	}
+
+	$( "div.card" ).draggable();
+	
+	function setupCategories(){
+			
+		$( ".category" ).droppable({
+			hoverClass: "hover-state",
+			drop: function( event, ui ) {
+				var $this = $( this );
+				
+					$(ui.draggable).draggable('destroy');
+					$(ui.draggable).draggable();
+					
+			}
+		}).resizable();
+	}
+	
+	
+	$( "#addCard" ).dialog({
+		modal: true,
+		autoOpen : false,
+		title : 'Add Cards',
+		buttons: {
+			"Done": function() {
+				var cardTitles = $('#cardTitlesTA').val();
+				setCards(cardTitles);
+				$( this ).dialog( "close" );
+			},
+			Cancel: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	
+	$( "#addCategory" ).dialog({
+		modal: true,
+		autoOpen : false,
+		title : 'Add Categories',
+		buttons: {
+			"Done": function() {
+				var categoryTitles = $('#categoryTitlesTA').val();
+				setCategories(categoryTitles);
+				$( this ).dialog( "close" );
+			},
+			Cancel: function() {
+				$( this ).dialog( "close" );
+			}
 		}
 	});
 	
 	
 	function bindHandlers(){
-		$('.add-card').on('click',function(event){
+	
+		$('.set-cards').on('click',function(event){
+			var $this = $(this);
+			var $target = $(event.target);
+			$( "#addCard" ).dialog('open');
+			
+		});
+		
+		$('.set-categories').on('click',function(event){
 			var $this = $(this);
 			var $target = $(event.target);
 			
-			$( "#addCard" ).dialog({
-				modal: true,
-				buttons: {
-					"Done": function() {
-					
-						var cardTitles = $('#cardTitlesTA').val();
-						
-						setCards(cardTitles);
-						
-						$( this ).dialog( "close" );
-						
-					},
-					Cancel: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
+			$( "#addCategory" ).dialog('open');
 			
 		});
 		
@@ -79,5 +130,6 @@ $(function(){
 	
 	compileTemplates();
 	bindHandlers();
+	setupCategories();
 	
 });
