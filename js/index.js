@@ -20,7 +20,17 @@ $(function(){
 	};
 	
 	function setupUI(){
-		var defaultCardsStr = '';
+		
+		var defaultCards = [];
+		
+		$.each(defaults.cards,function(index, element){
+			defaultCards.push(tmpl.card({title:element}));
+		});
+		
+		$('.deck').empty().append(defaultCards.join(''));
+		$( "div.card" ).draggable();
+		
+		
 	}
 	
 	function compileTemplates(){
