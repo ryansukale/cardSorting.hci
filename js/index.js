@@ -61,6 +61,7 @@ $(function(){
 
 	$( "div.card" ).draggable();
 	
+	
 	function setupCategories(){
 			
 		$( ".category" ).droppable({
@@ -76,10 +77,10 @@ $(function(){
 	}
 	
 	
-	$( "#addCard" ).dialog({
+	$( "#manageCards" ).dialog({
 		modal: true,
 		autoOpen : false,
-		title : 'Add Cards',
+		title : 'Manage Cards',
 		buttons: {
 			"Done": function() {
 				var cardTitles = $('#cardTitlesTA').val();
@@ -89,13 +90,18 @@ $(function(){
 			Cancel: function() {
 				$( this ).dialog( "close" );
 			}
+		},
+		position : {
+			my : 'left top',
+			at : 'left+90 top+5',
+			of : window
 		}
 	});
 	
-	$( "#addCategory" ).dialog({
+	$( "#manageCategories" ).dialog({
 		modal: true,
 		autoOpen : false,
-		title : 'Add Categories',
+		title : 'Manage Categories',
 		buttons: {
 			"Done": function() {
 				var categoryTitles = $('#categoryTitlesTA').val();
@@ -105,6 +111,11 @@ $(function(){
 			Cancel: function() {
 				$( this ).dialog( "close" );
 			}
+		},
+		position : {
+			my : 'left top',
+			at : 'left+90 top+40',
+			of : window
 		}
 	});
 	
@@ -114,7 +125,7 @@ $(function(){
 		$('.set-cards').on('click',function(event){
 			var $this = $(this);
 			var $target = $(event.target);
-			$( "#addCard" ).dialog('open');
+			$( "#manageCards" ).dialog('open');
 			
 		});
 		
@@ -122,7 +133,7 @@ $(function(){
 			var $this = $(this);
 			var $target = $(event.target);
 			
-			$( "#addCategory" ).dialog('open');
+			$( "#manageCategories" ).dialog('open');
 			
 		});
 		
