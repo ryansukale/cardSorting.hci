@@ -5,11 +5,27 @@ $(function(){
 	cardTitles = [], // An array of all the card titles
 	cardTmpl = '',
 	cardTitles = [], // An array of all the category titles
-	categoryTmpl = '';
+	categoryTmpl = '',
+	tmpl = {
+		card :'',
+		category : ''
+	},
+	defaults = {
+		cards : [
+			'DefaultCard1', 'DefaultCard2', 'DefaultCard3','DefaultCard4'
+		],
+		categories : [
+			'Category1', 'Category2'
+		]
+	};
+	
+	function setupUI(){
+		var defaultCardsStr = '';
+	}
 	
 	function compileTemplates(){
-		cardTmpl = _.template($('#cardTmpl').html());
-		categoryTmpl = _.template($('#categoryTmpl').html());
+		tmpl.card = _.template($('#cardTmpl').html());
+		tmpl.category = _.template($('#categoryTmpl').html());
 	}
 	
 	function setCards(cardTitles){
@@ -23,7 +39,7 @@ $(function(){
 			var trimmedValue = element.trim();
 			if(trimmedValue!==''){
 			
-				cardTitles.push(cardTmpl({title:trimmedValue}));
+				cardTitles.push(tmpl.card({title:trimmedValue}));
 				
 			}
 		});
@@ -45,7 +61,7 @@ $(function(){
 			var trimmedValue = element.trim();
 			if(trimmedValue!==''){
 			
-				categoryTitles.push(categoryTmpl({title:trimmedValue}));
+				categoryTitles.push(tmpl.category({title:trimmedValue}));
 				
 			}
 		});
@@ -141,6 +157,7 @@ $(function(){
 	
 	compileTemplates();
 	bindHandlers();
+	setupUI();
 	setupCategories();
 	
 });
